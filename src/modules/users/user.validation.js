@@ -36,6 +36,16 @@ const registerSchema = Joi.object({
   stripUnknown: true
 });
 
+const loginSchema = Joi.object({
+  email: Joi.string().trim().email().lowercase().required(),
+  password: Joi.string().min(8).max(72).required()
+}).options({
+  abortEarly: false,
+  stripUnknown: true
+});
+
+
 module.exports = {
-  registerSchema
+  registerSchema,
+  loginSchema
 };
